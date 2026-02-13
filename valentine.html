@@ -8,206 +8,101 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="loveletter2.css">
-    <style>
-        /* Additional styles for the glass box */
-        .glass-section {
-            display: flex;
-            justify-content: center;
-            margin: 40px 0;
-            position: relative;
-            z-index: 10;
-            overflow: hidden;
-        }
-
-        .glass-section .hearts {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-
-        .glass-box {
-            width: 400px;
-            height: 450px;
-            background: rgba(173, 216, 230, 0.1); /* Slight blue tint */
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 15px;
-            box-shadow:
-                0 0 30px rgba(0, 0, 0, 0.1),
-                inset 0 0 30px rgba(173, 216, 230, 0.2); /* Reflections and refractions */
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .glass-box:hover {
-            transform: scale(1.05);
-        }
-
-        .glass-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(173, 216, 230, 0.1));
-            border-radius: 15px;
-        }
-
-        .glass-box::after {
-            content: '';
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            right: 15px;
-            bottom: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            box-shadow: inset 0 0 15px rgba(173, 216, 230, 0.1);
-        }
-
-        .highlight {
-            position: absolute;
-            top: 30px;
-            left: 30px;
-            width: 60px;
-            height: 60px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.5), transparent);
-            border-radius: 50%;
-            filter: blur(10px);
-        }
-
-        .reflection {
-            position: absolute;
-            bottom: 30px;
-            right: 30px;
-            width: 40px;
-            height: 40px;
-            background: radial-gradient(circle, rgba(173, 216, 230, 0.3), transparent);
-            border-radius: 50%;
-            filter: blur(5px);
-        }
-
-        .letter-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            z-index: 1;
-            font-family: "Dancing Script", cursive;
-            color: #d63384;
-        }
-
-        .letter-content h1 {
-            font-size: 2rem;
-            margin: 0 0 10px 0;
-            color: #e91e63;
-        }
-
-        .letter-content p {
-            font-size: 1.2rem;
-            line-height: 1.5;
-            margin: 0;
-        }
-
-        /* Hidden and Visible classes for open/close functionality */
-        .glass-box.hidden {
-            opacity: 0;
-            visibility: hidden;
-            transform: scale(0.8);
-            transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
-        }
-
-        .glass-box.visible {
-            opacity: 1;
-            visibility: visible;
-            transform: scale(1);
-            transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
-        }
-
-
-    </style>
+    <link rel="stylesheet" href="valentine.css">
 </head>
-<body style="background: linear-gradient(to bottom, #ff8bc5, #ffffff);">
-    <div class="title-greeting">
-        <h1>Happy Valentine's Day, My Love!</h1>
-        <p>To my dearest Anatya, on this day of love, I want to express how much you mean to me. Here are some poems from my heart to yours.</p>
+<body>
+    <!-- Password Modal -->
+    <div class="password-modal" id="passwordModal">
+        <div class="password-content">
+            <h2>Enter the secret code</h2>
+            <p>Enter the secret code to unlock this special message...</p>
+            <input type="password" class="password-input" id="passwordInput" placeholder="Secret code...">
+            <button class="submit-btn" id="submitPassword">Unlock</button>
+        </div>
+    </div>
+    
+    <!-- Welcome Screen -->
+    <div class="welcome-screen hidden" id="welcomeScreen">
+        <h1 class="welcome-message">Welcome my love! ❤️</h1>
     </div>
 
-    <div class="poems">
-        <div class="poem-box">
-            <p>In your eyes, I see the stars so bright,<br>
-            Your smile lights up my darkest night.<br>
-            Forever yours, in love so true,<br>
-            My heart beats only for you.</p>
-        </div>
-        <div class="poem-box">
-            <p>With every breath, I think of you,<br>
-            In dreams, our love forever new.<br>
-            Hand in hand, we'll walk through life,<br>
-            Together as husband and wife.</p>
-        </div>
-        <div class="poem-box">
-            <p>Your touch ignites a fire so deep,<br>
-            In your arms, my secrets I keep.<br>
-            Passion flows like a river wide,<br>
-            With you, forever by my side.</p>
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent" style="background: linear-gradient(to bottom, #ff8bc5, #ffffff);">
+        <div class="title-greeting">
+            <h1>Happy Valentine's Day, My Love!</h1>
+            <p>To my dearest Anatya, on this day of love, I want to express how much you mean to me. Here are some poems from my heart to yours.</p>
         </div>
 
-
-    <div class="glass-section">
-        <div class="glass-box visible">
-            <div class="highlight"></div>
-            <div class="reflection"></div>
-            <div class="letter-content">
-                <h1>Happy Valentine's Day!</h1>
-                <p>My dearest love,</p>
-                <p>You are my everything. Your smile lights up my world, and your love fills my heart with endless joy. I cherish every moment with you.</p>
-                <p>Forever yours,<br>Your Valentine</p>
-                <div class="heart">♥</div>
+        <div class="poems">
+            <div class="poem-box">
+                <p>In your eyes, I see the stars so bright,<br>
+                Your smile lights up my darkest night.<br>
+                Forever yours, in love so true,<br>
+                My heart beats only for you.</p>
+            </div>
+            <div class="poem-box">
+                <p>With every breath, I think of you,<br>
+                In dreams, our love forever new.<br>
+                Hand in hand, we'll walk through life,<br>
+                Together as husband and wife.</p>
+            </div>
+            <div class="poem-box">
+                <p>Your touch ignites a fire so deep,<br>
+                In your arms, my secrets I keep.<br>
+                Passion flows like a river wide,<br>
+                With you, forever by my side.</p>
             </div>
         </div>
-        <div class="hearts">
-            <div class="heart a1"></div>
-            <div class="heart a2"></div>
-            <div class="heart a3"></div>
-            <div class="heart a4"></div>
-            <div class="heart a5"></div>
-            <div class="heart a6"></div>
-            <div class="heart a7"></div>
-            <div class="heart a8"></div>
-            <div class="heart a9"></div>
-            <div class="heart a10"></div>
-            <div class="heart a11"></div>
-            <div class="heart a12"></div>
-        </div>
-    </div>
 
-    <div class="envlope-wrapper">
-        <div id="envelope" class="close">
-            <div class="front flap"></div>
-            <div class="front pocket"></div>
-            <div class="letter">
-                <div class="words line1">To: Anatya</div>
-                <div class="words line2">Dear baby, you are so beautiful</div>
-                <div class="words line3">That every time i see you</div>
-                <div class="words line4">my world stops,</div>
+        <div class="glass-section">
+            <div class="glass-box visible">
+                <div class="highlight"></div>
+                <div class="reflection"></div>
+                <div class="letter-content">
+                    <h1>Happy Valentine's Day!</h1>
+                    <p>My dearest love,</p>
+                    <p>You are my everything. Your smile lights up my world, and your love fills my heart with endless joy. I cherish every moment with you.</p>
+                    <p>Forever yours,<br>Your Valentine</p>
+                    <div class="heart">♥</div>
+                </div>
+            </div>
+            <div class="hearts">
+                <div class="heart a1"></div>
+                <div class="heart a2"></div>
+                <div class="heart a3"></div>
+                <div class="heart a4"></div>
+                <div class="heart a5"></div>
+                <div class="heart a6"></div>
+                <div class="heart a7"></div>
+                <div class="heart a8"></div>
+                <div class="heart a9"></div>
+                <div class="heart a10"></div>
+                <div class="heart a11"></div>
+                <div class="heart a12"></div>
             </div>
         </div>
-    </div>
 
-    <div class="reset">
-        <button id="open">Open</button>
-        <button id="reset">Close</button>
-    </div>
+        <div class="envlope-wrapper">
+            <div id="envelope" class="close">
+                <div class="front flap"></div>
+                <div class="front pocket"></div>
+                <div class="letter">
+                    <div class="words line1">To: Anatya</div>
+                    <div class="words line2">Dear baby, you are so beautiful</div>
+                    <div class="words line3">That every time i see you</div>
+                    <div class="words line4">my world stops,</div>
+                </div>
+            </div>
+        </div>
 
-    <div class="closing-message">
-        <p>With all my love, forever and always. Happy Valentine's Day!</p>
+        <div class="reset">
+            <button id="open">Open</button>
+            <button id="reset">Close</button>
+        </div>
+
+        <div class="closing-message">
+            <p>With all my love, forever and always. Happy Valentine's Day!</p>
+        </div>
     </div>
 
     <!-- Confetti Container -->
@@ -216,7 +111,43 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="loveletter2.js"></script>
     <script>
-        $(document).ready(function() {
+        // Password protection
+        const CORRECT_PASSWORD = 'sayanganatya';
+        
+        const passwordModal = document.getElementById('passwordModal');
+        const welcomeScreen = document.getElementById('welcomeScreen');
+        const mainContent = document.getElementById('mainContent');
+        const passwordInput = document.getElementById('passwordInput');
+        const submitPassword = document.getElementById('submitPassword');
+        
+        submitPassword.addEventListener('click', function() {
+            if (passwordInput.value.toLowerCase() === CORRECT_PASSWORD.toLowerCase()) {
+                passwordModal.classList.add('hidden');
+                welcomeScreen.classList.remove('hidden');
+                
+                setTimeout(() => {
+                    welcomeScreen.classList.add('hidden');
+                    mainContent.classList.add('visible');
+                }, 2500);
+            } else {
+                passwordInput.value = '';
+                passwordInput.classList.add('error');
+                passwordInput.placeholder = 'Try again, honey...';
+                setTimeout(() => {
+                    passwordInput.classList.remove('error');
+                    passwordInput.placeholder = 'Secret code...';
+                }, 1500);
+            }
+        });
+        
+        // Allow Enter key to submit password
+        passwordInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                submitPassword.click();
+            }
+        });
+        
+$(document).ready(function() {
             // Envelope open/close functionality
             var envelope = $("#envelope");
             
@@ -227,129 +158,52 @@
             $("#reset").click(function() {
                 envelope.addClass("close").removeClass("open");
             });
+            
+            // Randomly position hearts around letter-content
+            function positionHeartsRandomly() {
+                var letterContent = document.querySelector('.letter-content');
+                var heartsContainer = document.querySelector('.glass-section .hearts');
+                var hearts = heartsContainer.querySelectorAll('.heart');
+                
+                if (!letterContent || hearts.length === 0) return;
+                
+                // Get letter-content position and dimensions
+                var letterRect = letterContent.getBoundingClientRect();
+                var containerRect = heartsContainer.getBoundingClientRect();
+                
+                // Calculate center of letter-content relative to container
+                var centerX = letterRect.left - containerRect.left + letterRect.width / 2;
+                var centerY = letterRect.top - containerRect.top + letterRect.height / 2;
+                
+                // Distance range around the letter-content (in pixels)
+                var minDistance = 80;
+                var maxDistance = 180;
+                
+                hearts.forEach(function(heart, index) {
+                    // Generate random angle and distance
+                    var angle = Math.random() * 2 * Math.PI;
+                    var distance = minDistance + Math.random() * (maxDistance - minDistance);
+                    
+                    // Calculate position
+                    var x = centerX + Math.cos(angle) * distance;
+                    var y = centerY + Math.sin(angle) * distance;
+                    
+                    // Add some randomness to the position
+                    x += (Math.random() - 0.50) * 60;
+                    y += (Math.random() - 0.50) * 60;
+                    
+                    // Set the position
+                    heart.style.left = x + 'px';
+                    heart.style.top = y + 'px';
+                });
+            }
+            
+            // Position hearts when page loads
+            positionHeartsRandomly();
+            
+            // Reposition hearts on window resize
+            window.addEventListener('resize', positionHeartsRandomly);
         });
     </script>
 </body>
 </html>
-<!-- 706b91ad25c37c770d8b264557c18994afbf5f94 -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Combined Valentine's Love Letter</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="loveletter2.css">
-    <style>
-        /* Additional styles for the glass box */
-        .glass-section {
-            display: flex;
-            justify-content: center;
-            margin: 40px 0;
-            position: relative;
-            z-index: 10;
-            overflow: hidden;
-        }
-
-        .glass-section .hearts {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-
-        .glass-box {
-            width: 400px;
-            height: 450px;
-            background: rgba(173, 216, 230, 0.1); /* Slight blue tint */
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 15px;
-            box-shadow:
-                0 0 30px rgba(0, 0, 0, 0.1),
-                inset 0 0 30px rgba(173, 216, 230, 0.2); /* Reflections and refractions */
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .glass-box:hover {
-            transform: scale(1.05);
-        }
-
-        .glass-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(173, 216, 230, 0.1));
-            border-radius: 15px;
-        }
-
-        .glass-box::after {
-            content: '';
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            right: 15px;
-            bottom: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            box-shadow: inset 0 0 15px rgba(173, 216, 230, 0.1);
-        }
-
-        .highlight {
-            position: absolute;
-            top: 30px;
-            left: 30px;
-            width: 60px;
-            height: 60px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.5), transparent);
-            border-radius: 50%;
-            filter: blur(10px);
-        }
-
-        .reflection {
-            position: absolute;
-            bottom: 30px;
-            right: 30px;
-            width: 40px;
-            height: 40px;
-            background: radial-gradient(circle, rgba(173, 216, 230, 0.3), transparent);
-            border-radius: 50%;
-            filter: blur(5px);
-        }
-
-        .letter-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            z-index: 1;
-            font-family: "Dancing Script", cursive;
-            color: #d63384;
-        }
-
-        .letter-content h1 {
-            font-size: 2rem;
-            margin: 0 0 10px 0;
-            color: #e91e63;
-        }
-
-        .letter-content p {
-            font-size: 1.2rem;
-            line-height: 1.5;
-            margin: 0;
-        }
-        .title-greeting p {
-            color: #c5285c;
-
-        }
-        

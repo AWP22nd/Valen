@@ -16,7 +16,7 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(to bottom, #ff8bc5, #ffffff);
+  background: linear-gradient(to bottom, #ffb3d9, #ffffff);
   min-height: 100vh;
   overflow-x: hidden;
 }
@@ -40,7 +40,7 @@ body {
   position: absolute;
   width: var(--heart-size, 25px);
   height: var(--heart-size, 25px);
-  background: #ff0000;
+  background: rgb(255, 174, 188);
   transform: rotate(45deg);
   opacity: 0.5;
 }
@@ -50,7 +50,7 @@ body {
   position: absolute;
   width: var(--heart-size, 25px);
   height: var(--heart-size, 25px);
-  background: #ff0000;
+  background: rgb(255, 174, 188);
   border-radius: 50%;
   content: "";
 }
@@ -686,10 +686,11 @@ body {
 
 .letter-header h3 {
     font-family: 'Dancing Script', cursive;
-    font-size: 28px;
+    font-size: 42px;
     color: #d81b60;
     margin: 0;
 }
+
 
 .letter-header span {
     font-size: 14px;
@@ -908,7 +909,8 @@ body {
   font-family: "Dancing Script", cursive;
   font-size: 1.6rem;
   color: #d81b60;
-  margin: 250px auto 60px auto;
+  margin: 400px auto 60px auto;
+
   padding: 25px 40px;
   font-style: italic;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
@@ -1000,8 +1002,6 @@ body {
     opacity: 0.2;
   }
 }
-
-
 
 /* ========================================
    CONFETTI CONTAINER
@@ -1100,13 +1100,18 @@ body {
   
   .closing-message {
     font-size: 1.3rem;
-    margin: 20px;
+    margin: 250px auto 40px auto;
     padding: 20px;
   }
   
   .reset {
     flex-direction: column;
     align-items: center;
+  }
+
+  /* Responsive for larger "A Letter For You" */
+  .letter-header h3 {
+    font-size: 32px;
   }
 }
 
@@ -1143,5 +1148,17 @@ body {
   
   .reset button {
     width: 150px;
+  }
+
+  /* Responsive for larger "A Letter For You" on mobile */
+  .letter-header h3 {
+    font-size: 28px;
+  }
+
+  /* Responsive for closing message spacing on mobile */
+  .closing-message {
+    margin: 150px auto 30px auto;
+    padding: 15px 25px;
+    font-size: 1.2rem;
   }
 }

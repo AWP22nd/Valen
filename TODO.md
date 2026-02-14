@@ -1,19 +1,18 @@
-# TODO: Add Random Heart Effects Around Letter
+# TODO - Add Red Hearts with Low Transparency
 
-## Task Summary
-Add more randomized heart effects around the letter content in valentine.html
+## Task
+Add red hearts randomly on all backgrounds with low transparency
 
-## Plan:
-- [ ] Increase number of hearts in HTML (from 12 to 20+)
-- [ ] Update CSS with varied heart sizes, colors, and animations
-- [ ] Improve JavaScript for better random positioning
-- [ ] Add additional animations (twinkle, pulse, float)
+## Files to Modify:
+- [ ] valentine.css - Update heart styles (red color, low opacity)
+- [ ] valentine.html - Add background-effects container and JavaScript for random hearts
 
-## Files to Edit:
-- valentine.html - Add more heart elements
-- valentine.css - Add varied heart styles and animations
+## Changes:
+1. valentine.css:
+   - Change `.bg-heart` color from pink (#ff6b9d) to RED (#ff0000)
+   - Change opacity from 0.6 to 0.2-0.3 (low transparency)
+   - Add more random hearts (increase count)
 
-## Steps:
-1. Add more heart elements to the HTML
-2. Add CSS for varied heart sizes and colors
-3. Improve JavaScript randomization
+2. valentine.html:
+   - Add background-effects div container
+   - Add JavaScript to generate random positioned hearts

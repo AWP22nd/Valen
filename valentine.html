@@ -11,6 +11,31 @@
     <link rel="stylesheet" href="valentine.css">
 </head>
 <body>
+    <!-- Background Effects Container -->
+    <div class="background-effects" id="backgroundEffects">
+        <!-- Predefined background hearts -->
+        <div class="bg-heart"></div>
+        <div class="bg-heart"></div>
+        <div class="bg-heart"></div>
+        <div class="bg-heart"></div>
+        <div class="bg-heart"></div>
+        <div class="bg-heart"></div>
+        <div class="bg-heart"></div>
+        <div class="bg-heart"></div>
+        <div class="bg-heart"></div>
+        <div class="bg-heart"></div>
+        <div class="bg-heart"></div>
+        <div class="bg-heart"></div>
+        <div class="bg-heart"></div>
+        <div class="bg-heart"></div>
+        <div class="bg-heart"></div>
+        <div class="bg-heart"></div>
+        <div class="bg-heart"></div>
+        <div class="bg-heart"></div>
+        <div class="bg-heart"></div>
+        <div class="bg-heart"></div>
+    </div>
+    
     <!-- Password Modal -->
     <div class="password-modal" id="passwordModal">
         <div class="password-content">
@@ -82,24 +107,23 @@
             </div>
         </div>
 
-        <div class="envlope-wrapper">
-            <div id="envelope" class="close">
-                <div class="front flap"></div>
-                <div class="front pocket"></div>
-                <div class="letter">
-                    <div class="words line1">To: Anatya</div>
-                    <div class="words line2">Dear baby, you are so beautiful</div>
-                    <div class="words line3">That every time i see you</div>
-                    <div class="words line4">my world stops,</div>
-                </div>
+        <!-- Expandable Love Letter -->
+        <div class="letter" id="loveLetter">
+            <div class="letter-header">
+                <h3>A Letter For You</h3>
+                <span> 👇 Click to open</span>
+            </div>
+            <div class="letter-text">
+                <p>My love,</p>
+                <p>Every day with you feels like a beautiful dream that I never want to wake up from. Your smile brightens my darkest days, and your laughter is my favorite melody.</p>
+                <p>I cherish every moment we spend together, from our silly inside jokes to our deep conversations. You've shown me what true happiness feels like, and I'm forever grateful to have you in my life.</p>
+                <p>No matter where life takes us, always remember that my heart belongs to you.</p>
+                <p>Forever yours,</p>
+                <p>Me</p>
             </div>
         </div>
 
-        <div class="reset">
-            <button id="open">Open</button>
-            <button id="reset">Close</button>
-        </div>
-
+        <!-- Closing Message - Moved to bottom with large distance -->
         <div class="closing-message">
             <p>With all my love, forever and always. Happy Valentine's Day!</p>
         </div>
@@ -147,18 +171,115 @@
             }
         });
         
+        // Expandable love letter
+        const loveLetter = document.getElementById('loveLetter');
+        if (loveLetter) {
+            loveLetter.addEventListener('click', function() {
+                this.classList.toggle('expanded');
+            });
+        }
+        
+        // Generate random background hearts
+        function generateRandomHearts() {
+            const backgroundEffects = document.getElementById('backgroundEffects');
+            if (!backgroundEffects) return;
+            
+            const numberOfHearts = 30;
+            
+            for (let i = 0; i < numberOfHearts; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'bg-heart';
+                
+                // Random position
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                
+                // Random size
+                const size = 15 + Math.random() * 25;
+                
+                // Random animation duration and delay
+                const duration = 6 + Math.random() * 6;
+                const delay = Math.random() * 5;
+                
+                heart.style.left = left + '%';
+                heart.style.top = top + '%';
+                heart.style.width = size + 'px';
+                heart.style.height = size + 'px';
+                heart.style.setProperty('--heart-size', size + 'px');
+                heart.style.animationDuration = duration + 's';
+                heart.style.animationDelay = delay + 's';
+                
+                backgroundEffects.appendChild(heart);
+            }
+        }
+        
+        // Generate random background sparkles
+        function generateRandomSparkles() {
+            const backgroundEffects = document.getElementById('backgroundEffects');
+            if (!backgroundEffects) return;
+            
+            const numberOfSparkles = 20;
+            
+            for (let i = 0; i < numberOfSparkles; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'bg-sparkle';
+                
+                // Random position
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                
+                // Random animation duration and delay
+                const duration = 2 + Math.random() * 3;
+                const delay = Math.random() * 4;
+                
+                sparkle.style.left = left + '%';
+                sparkle.style.top = top + '%';
+                sparkle.style.animationDuration = duration + 's';
+                sparkle.style.animationDelay = delay + 's';
+                
+                backgroundEffects.appendChild(sparkle);
+            }
+        }
+        
+        // Generate random background bubbles
+        function generateRandomBubbles() {
+            const backgroundEffects = document.getElementById('backgroundEffects');
+            if (!backgroundEffects) return;
+            
+            const numberOfBubbles = 15;
+            
+            for (let i = 0; i < numberOfBubbles; i++) {
+                const bubble = document.createElement('div');
+                bubble.className = 'bg-bubble';
+                
+                // Random position
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                
+                // Random size
+                const size = 30 + Math.random() * 50;
+                
+                // Random animation duration and delay
+                const duration = 8 + Math.random() * 8;
+                const delay = Math.random() * 6;
+                
+                bubble.style.left = left + '%';
+                bubble.style.top = top + '%';
+                bubble.style.width = size + 'px';
+                bubble.style.height = size + 'px';
+                bubble.style.animationDuration = duration + 's';
+                bubble.style.animationDelay = delay + 's';
+                
+                backgroundEffects.appendChild(bubble);
+            }
+        }
+        
+        // Generate random hearts when page loads
+        generateRandomHearts();
+        generateRandomSparkles();
+        generateRandomBubbles();
+        
 $(document).ready(function() {
-            // Envelope open/close functionality
-            var envelope = $("#envelope");
-            
-            $("#open").click(function() {
-                envelope.addClass("open").removeClass("close");
-            });
-            
-            $("#reset").click(function() {
-                envelope.addClass("close").removeClass("open");
-            });
-            
             // Randomly position hearts around letter-content
             function positionHeartsRandomly() {
                 var letterContent = document.querySelector('.letter-content');

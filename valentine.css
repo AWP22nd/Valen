@@ -369,11 +369,11 @@ body {
    ======================================== */
 .poems {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   gap: 20px;
   margin: 40px auto;
-  max-width: 1000px;
+  max-width: 600px;
   padding: 0 20px;
 }
 
@@ -382,7 +382,11 @@ body {
   border: 2px solid rgba(216, 27, 96, 0.3);
   border-radius: 20px;
   padding: 25px;
-  width: 280px;
+  width: 380px;
+  height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-shadow: 
     0 8px 20px rgba(0, 0, 0, 0.1),
     inset 0 0 20px rgba(255, 255, 255, 0.5);
@@ -427,8 +431,8 @@ body {
 }
 
 .glass-box {
-  width: 400px;
-  height: 450px;
+  width: 500px;
+  height: 550px;
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(15px);
   border: 2px solid rgba(255, 255, 255, 0.4);
@@ -440,7 +444,7 @@ body {
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
 .glass-box:hover {
@@ -502,7 +506,7 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) translateZ(0);
   text-align: center;
   z-index: 1;
   font-family: "Dancing Script", cursive;
@@ -515,20 +519,16 @@ body {
   margin: 0 0 15px 0;
   color: #e91e63;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  transition: color 0.4s ease, transform 0.4s ease;
 }
 
 .letter-content p {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   line-height: 1.6;
   margin: 8px 0;
 }
 
-.letter-content .heart {
-  font-size: 2rem;
-  color: #e91e63;
-  margin-top: 15px;
-  animation: heartbeat 1.5s infinite;
-}
+
 
 @keyframes heartbeat {
   0%, 100% { transform: scale(1); }
@@ -764,87 +764,7 @@ body {
   100% { transform: translateY(0px); }
 }
 
-/* ========================================
-   FLOATING HEARTS
-   ======================================== */
-.heart {
-  position: relative;
-  display: inline-block;
-}
 
-.heart:before,
-.heart:after {
-  position: absolute;
-  content: "";
-  left: 14px;
-  top: 0;
-  width: 14px;
-  height: 22px;
-  background: #e91e63;
-  border-radius: 14px 14px 0 0;
-  transform: rotate(-45deg);
-  transform-origin: 0 100%;
-}
-
-.heart:after {
-  left: 0;
-  transform: rotate(45deg);
-  transform-origin: 100% 100%;
-}
-
-/* Heart animations for glass section */
-.hearts .heart {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background: #e91e63;
-  transform: rotate(45deg);
-  animation: floatHeart 3s ease-in-out infinite;
-}
-
-.hearts .heart::before,
-.hearts .heart::after {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background: #e91e63;
-  border-radius: 50%;
-  content: "";
-}
-
-.hearts .heart::before {
-  top: -10px;
-  left: 0;
-}
-
-.hearts .heart::after {
-  top: 0;
-  left: -10px;
-}
-
-.hearts .a1 { animation-delay: 0s; }
-.hearts .a2 { animation-delay: 0.5s; }
-.hearts .a3 { animation-delay: 1s; }
-.hearts .a4 { animation-delay: 1.5s; }
-.hearts .a5 { animation-delay: 2s; }
-.hearts .a6 { animation-delay: 2.5s; }
-.hearts .a7 { animation-delay: 3s; }
-.hearts .a8 { animation-delay: 3.5s; }
-.hearts .a9 { animation-delay: 4s; }
-.hearts .a10 { animation-delay: 4.5s; }
-.hearts .a11 { animation-delay: 5s; }
-.hearts .a12 { animation-delay: 5.5s; }
-
-@keyframes floatHeart {
-  0%, 100% { 
-    transform: rotate(45deg) translateY(0) scale(1);
-    opacity: 0.8;
-  }
-  50% { 
-    transform: rotate(45deg) translateY(-30px) scale(1.2);
-    opacity: 1;
-  }
-}
 
 /* ========================================
    CONFETTI CONTAINER

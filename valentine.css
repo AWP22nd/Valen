@@ -415,12 +415,14 @@ body {
    ======================================== */
 .glass-section {
   display: flex;
-  justify-content: center;
-  margin: 40px 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  margin: 60px 0;
   position: relative;
   z-index: 10;
   overflow: visible;
-  padding: 40px;
+  padding: 60px;
 }
 
 .glass-section .hearts {
@@ -525,6 +527,7 @@ body {
   color: #d81b60;
   padding: 20px;
   background: transparent;
+
 }
 
 .letter-content h1 {
@@ -539,6 +542,16 @@ body {
   font-size: 1.4rem;
   line-height: 1.6;
   margin: 8px 0;
+}
+
+/* Heart floating animation - slow hovering effect */
+.letter-content .heart {
+  display: inline-block;
+  font-size: 3rem;
+  color: #e91e63;
+  animation: slowFloat 3s ease infinite;
+  margin-top: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 
@@ -567,19 +580,94 @@ body {
    ======================================== */
 .letter {
     padding: 25px;
-    background: #fff5f7;
-    border-radius: 15px;
-    border: 2px dashed #ffb7c5;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 139, 197, 0.3) 0%,
+        rgba(255, 200, 220, 0.2) 40%,
+        rgba(255, 255, 255, 0.15) 100%
+    );
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
     margin: 0 auto 20px auto;
     cursor: pointer;
     transition: all 0.3s ease;
     max-width: 900px;
     width: 95%;
+    box-shadow: 
+        0 25px 60px rgba(216, 27, 96, 0.15),
+        0 12px 25px rgba(0, 0, 0, 0.08),
+        0 6px 12px rgba(0, 0, 0, 0.05),
+        inset 0 0 40px rgba(255, 255, 255, 0.2),
+        inset 0 0 80px rgba(173, 216, 230, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.letter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(173, 216, 230, 0.1));
+    border-radius: 20px;
+}
+
+.letter::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+}
+
+.letter .highlight {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.6), transparent);
+    border-radius: 50%;
+    filter: blur(15px);
+    animation: pulse 3s infinite;
+    z-index: 1;
+}
+
+.letter .reflection {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, rgba(173, 216, 230, 0.4), transparent);
+    border-radius: 50%;
+    filter: blur(10px);
+    animation: pulse 4s infinite reverse;
+    z-index: 1;
 }
 
 .letter:hover {
-    background: #fff0f3;
-    border-color: #d81b60;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 139, 197, 0.4) 0%,
+        rgba(255, 200, 220, 0.3) 40%,
+        rgba(255, 255, 255, 0.2) 100%
+    );
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.02);
+    box-shadow: 
+        0 30px 70px rgba(216, 27, 96, 0.25),
+        0 15px 30px rgba(0, 0, 0, 0.1),
+        inset 0 0 40px rgba(255, 255, 255, 0.3),
+        inset 0 0 80px rgba(173, 216, 230, 0.15);
 }
 
 .letter-header {
@@ -856,6 +944,54 @@ body {
   0% { transform: translateY(0px); }
   50% { transform: translateY(-15px); }
   100% { transform: translateY(0px); }
+}
+
+/* Slow floating animation - like floating in water/air */
+@keyframes slowFloat {
+  0% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+    opacity: 0.6;
+  }
+  25% {
+    transform: translateY(-20px) translateX(5px) rotate(5deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-40px) translateX(-5px) rotate(-5deg);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translateY(-20px) translateX(8px) rotate(3deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+    opacity: 0.6;
+  }
+}
+
+/* Extra slow floating for background hearts */
+@keyframes ultraSlowFloat {
+  0% {
+    transform: rotate(45deg) translateY(0) translateX(0) scale(1);
+    opacity: 0.2;
+  }
+  25% {
+    transform: rotate(45deg) translateY(-40px) translateX(10px) scale(1.1);
+    opacity: 0.35;
+  }
+  50% {
+    transform: rotate(45deg) translateY(-80px) translateX(-10px) scale(1);
+    opacity: 0.2;
+  }
+  75% {
+    transform: rotate(45deg) translateY(-40px) translateX(15px) scale(0.9);
+    opacity: 0.3;
+  }
+  100% {
+    transform: rotate(45deg) translateY(0) translateX(0) scale(1);
+    opacity: 0.2;
+  }
 }
 
 
